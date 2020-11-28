@@ -5,7 +5,8 @@
 {% block body %}
     {% for key, weatherData in content %}
     <img src="{{ asset('/assets/images/' ~ weatherData.weather ~ '.png')}}">
-    <p><a href="">{{ weatherData.city }}</a></p>
+    <p><a href="{{ path('city_select', { 'id': key}) }}">{{ weatherData.city }}</a></p>
     <p>{{ weatherData.date|date('d-m')}}: {{ weatherData.min }}°C / {{ weatherData.max }}°C</p>
     {% endfor %}
+    {% include('/default/_widget.html.twig') %}
 {% endblock %}
