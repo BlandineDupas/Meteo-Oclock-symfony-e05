@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    {% for paragraph in content %}
+    <p>{{ paragraph }}</p>
+    {% endfor %}
+{% endblock %}

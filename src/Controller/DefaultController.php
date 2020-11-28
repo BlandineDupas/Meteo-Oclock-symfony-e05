@@ -24,4 +24,36 @@ class DefaultController extends AbstractController
             ]
         );
     }
+    /**
+     * @Route("/montagnes", name="mountains", methods={"GET"})
+     */
+    public function mountains(): Response
+    {
+        return $this->render(
+            'default/locations.html.twig',
+            [
+                'title' => 'La météo des montagnes',
+                'content' => [
+                    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet eaque vitae maiores numquam suscipit nobis temporibus facilis! Facilis autem deserunt omnis enim ex voluptate facere minus tenetur. Cupiditate, illum doloremque.'
+                ]
+            ]
+        );
+    }
+
+    /**
+     * @Route("/plages", name="beaches", methods={"GET"})
+     */
+    public function beaches(): Response
+    {
+        return $this->render(
+            'default/locations.html.twig',
+            [
+                'title' => 'La météo des plages',
+                'content' => [
+                    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet eaque vitae maiores numquam suscipit nobis temporibus facilis! Facilis autem deserunt omnis enim ex voluptate facere minus tenetur. Cupiditate, illum doloremque.',
+                    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet eaque vitae maiores numquam suscipit nobis temporibus facilis! Facilis autem deserunt omnis enim ex voluptate facere minus tenetur. Cupiditate, illum doloremque.'
+                ]
+            ]
+        );
+    }
 }
