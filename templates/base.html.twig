@@ -5,18 +5,28 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
 
         {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('/assets/styles/styles.css') }}">
     </head>
     <body>
-        <nav>
-            <ul>
-                <li><a href="{{ path('homepage') }}">Accueil</a></li>
-                <li><a href="{{ path('mountains') }}">Montagne</a></li>
-                <li><a href="{{ path('beaches') }}">Plages</a></li>
-            </ul>
-        </nav>
+    {% dump(app.request) %}
+        <header>
+            <nav>
+                <ul class="navlist">
+                    <a class="navlist_item {{ app.request.attributes.get('_route') == 'homepage' ? 'active'}}" href="{{ path('homepage') }}"><li >Accueil</li></a>
+                    <a class="navlist_item {{ app.request.attributes.get('_route') == 'mountains' ? 'active'}}" href="{{ path('mountains') }}"><li>Montagne</li></a>
+                    <a class="navlist_item {{ app.request.attributes.get('_route') == 'beaches' ? 'active'}}" href="{{ path('beaches') }}"><li>Plages</li></a>
+                </ul>
+            </nav>
+        </header>
         <hr>
-        <h1>{{ title }}</h1>
-        {% block body %}{% endblock %}
+        <main class="main">
+            <section class="main_content">
+                <h1>{{ title }}</h1>
+                {% block body %}{% endblock %}
+            </section>
+            
+            <section class="main_widget">{% include('/default/_widget.html.twig') %}</section>
+        </main>
 
         {% block javascripts %}{% endblock %}
 

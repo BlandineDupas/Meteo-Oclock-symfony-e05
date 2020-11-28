@@ -1,15 +1,12 @@
-<section>
-    {% if selectedCity is not empty %}
-        <div>
-            <p><strong>{{ selectedCity.city }}</strong></p>
-            <p>{{ selectedCity.date }}</p>
-            <img src="{{ asset('/assets/images/' ~ selectedCity.weather ~ '.png') }}">
-            <p>min {{ selectedCity.min }}°C / max {{ selectedCity.max }}°C</p>
-        </div>
-        <p><em>OU</em></p>
-    {% endif %}
-    <div>
-        <p><a href="{{ path('homepage') }}">Sélectionnez une ville dans la liste de gauche</a></p>
+{% if selectedCity is not empty %}
+    <div class="widget_box">
+        <h2 class="widget_city-name">{{ selectedCity.city }}</h2>
+        <p>{{ selectedCity.date }}</p>
+        <img class="widget_weather-pic" src="{{ asset('/assets/images/' ~ selectedCity.weather ~ '.png') }}">
+        <p>min {{ selectedCity.min }}°C / max {{ selectedCity.max }}°C</p>
     </div>
-
-</section>
+    <p><em>OU</em></p>
+{% endif %}
+<div class="widget_box">
+    <p><a class="widget_link" href="{{ path('homepage') }}">Sélectionnez une ville dans la liste de gauche</a></p>
+</div>
