@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    {% for key, weatherData in content %}
+    <img src="{{ asset('/assets/images/' ~ weatherData.weather ~ '.png')}}">
+    <p><a href="">{{ weatherData.city }}</a></p>
+    <p>{{ weatherData.date|date('d-m')}}: {{ weatherData.min }}°C / {{ weatherData.max }}°C</p>
+    {% endfor %}
+{% endblock %}
