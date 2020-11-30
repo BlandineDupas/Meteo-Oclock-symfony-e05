@@ -8,22 +8,19 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use WeatherModel;
 
-class DefaultController extends AbstractController
+class WeatherController extends AbstractController
 {
     /**
      * @Route("/", name="homepage", methods={"GET"})
      */
-    public function index(SessionInterface $session): Response
+    public function homepage(): Response
     {
         $weatherData = WeatherModel::getWeatherData();
-        $selectedCity = $session->get('selectedCity');
-        dump($selectedCity);
         return $this->render(
-            'default/index.html.twig',
+            'weather/index.html.twig',
             [
                 'title' => 'Bienvenue sur la météo des villes !',
                 'content' => $weatherData,
-                'selectedCity' => $selectedCity
             ]
         );
     }
@@ -31,15 +28,12 @@ class DefaultController extends AbstractController
     /**
      * @Route("/montagnes", name="mountains", methods={"GET"})
      */
-    public function mountains(SessionInterface $session): Response
+    public function mountains(): Response
     {
-        $selectedCity = $session->get('selectedCity');
-
         return $this->render(
-            'default/locations.html.twig',
+            'weather/locations.html.twig',
             [
                 'title' => 'La météo des montagnes',
-                'selectedCity' => $selectedCity,
                 'content' => [
                     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet eaque vitae maiores numquam suscipit nobis temporibus facilis! Facilis autem deserunt omnis enim ex voluptate facere minus tenetur. Cupiditate, illum doloremque.'
                 ]
@@ -50,15 +44,12 @@ class DefaultController extends AbstractController
     /**
      * @Route("/plages", name="beaches", methods={"GET"})
      */
-    public function beaches(SessionInterface $session): Response
+    public function beaches(): Response
     {
-        $selectedCity = $session->get('selectedCity');
-
         return $this->render(
-            'default/locations.html.twig',
+            'weather/locations.html.twig',
             [
                 'title' => 'La météo des plages',
-                'selectedCity' => $selectedCity,
                 'content' => [
                     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet eaque vitae maiores numquam suscipit nobis temporibus facilis! Facilis autem deserunt omnis enim ex voluptate facere minus tenetur. Cupiditate, illum doloremque.',
                     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet eaque vitae maiores numquam suscipit nobis temporibus facilis! Facilis autem deserunt omnis enim ex voluptate facere minus tenetur. Cupiditate, illum doloremque.'

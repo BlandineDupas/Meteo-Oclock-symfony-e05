@@ -1,0 +1,10 @@
+<header>
+    <nav>
+        <ul class="navlist">
+            <a class="navlist_item {{ app.request.attributes.get('_route') == 'homepage' ? 'active'}}" href="{{ path('homepage') }}"><li >Accueil</li></a>
+            <a class="navlist_item {{ app.request.attributes.get('_route') == 'mountains' ? 'active'}}" href="{{ path('mountains') }}"><li>Montagne</li></a>
+            <a class="navlist_item {{ app.request.attributes.get('_route') == 'beaches' ? 'active'}}" href="{{ path('beaches') }}"><li>Plages</li></a>
+        </ul>
+    </nav>
+</header>
+<hr>

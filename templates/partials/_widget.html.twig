@@ -1,3 +1,5 @@
+{% set selectedCity = app.session.get('selectedCity') %}
+
 {% if selectedCity is not empty %}
     <div class="widget_box">
         <h2 class="widget_city-name">{{ selectedCity.city }}</h2>
